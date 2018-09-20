@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Dados da Viagem</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="travelDataForm" (ngSubmit)="saveTravelData()">
+    <ion-item>
+      <ion-label>Data de Início</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="initDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Data de Fim</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="finalDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Valor Diário</ion-label>
+      <ion-input type="number" formControlName="dailyValue"></ion-input>
+    </ion-item>
+
+    <br />
+
+    <div text-center>
+      <button type="submit" ion-button full round [disabled]="!travelDataForm.valid">Salvar Dados</button>
+    </div>
+  </form>
+
+</ion-content>
