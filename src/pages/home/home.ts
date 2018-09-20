@@ -20,8 +20,10 @@ export class HomePage {
     this.travelDataDocument = this.db.doc<TravelData>('travel-data/JIIrZLsuAacLVKPyKWnx');
     this.travelDataDocument.valueChanges()
       .subscribe(data => {
-        let oneDay = 1000*60*60*24;;
-        this.remainingCash = of((new Date(data.finalDate) - new Date(data.initDate)) / oneDay * data.dailyValue);
+        let oneDay = 1000*60*60*24;
+        let initDate = new Date(data.initDate).getTime();
+        let finalDate = new Date(data.finalDate).getTime();
+        this.remainingCash = of((finalDate - initDate) / oneDay * data.dailyValue);
       });
   }
 
